@@ -1,0 +1,11 @@
+{
+  "name": "savorcline-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SavorCline website, demo workspace and application center",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/"
+  }
+}

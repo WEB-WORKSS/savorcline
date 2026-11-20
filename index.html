@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SavorCline — Allergen risk checks for food production schedules</title>
+  <meta name="description" content="SavorCline checks food production schedules, ingredient specifications and cleaning records for allergen cross-contamination risks, and suggests safer run orders before production begins.">
+  <meta name="theme-color" content="#1f5c45">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SavorCline — Allergen risk caught before the line starts">
+  <meta property="og:description" content="Allergen risk detection, safer production sequencing, cleaning verification and compliance reporting for food manufacturers.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/home.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header data-header></header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Allergen management for food manufacturers</p>
+          <h1>Catch allergen cross-contact in the <em>schedule</em>, not on the swab.</h1>
+          <p class="lede">SavorCline checks every changeover in your production plan against what the previous run leaves on the line and the cleaning recorded in between. Your QA team sees unsafe sequences, missing cleaning records and a safer run order before the shift starts.</p>
+          <div class="hero-cta">
+            <a class="btn primary" href="/app.html">Open the demo workspace <span class="arrow">→</span></a>
+            <a class="btn ghost" href="#how">See how it works</a>
+          </div>
+          <p class="hero-status"><span class="pulse" aria-hidden="true"></span> Interactive preview · runs in your browser on a fictional bakery's sample data</p>
+        </div>
+        <figure class="hero-visual" aria-label="Example: changeover checks on a bakery production line">
+          <div class="board card" data-hero-board></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="highlights" aria-label="Product highlights">
+      <div class="wrap hl-grid" data-highlights></div>
+    </section>
+
+    <!-- PROBLEM / SOLUTION -->
+    <section class="section problem" id="problem">
+      <div class="wrap ps-grid">
+        <div class="reveal">
+          <p class="eyebrow">The problem</p>
+          <h2>Allergen risk lives in the changeover.</h2>
+          <p class="lede">Most allergen controls are designed product by product. The risk appears when products share a line: a hazelnut brownie at 06:00, a plain loaf at 08:00, and a cleaning record that may or may not say what was done in between.</p>
+          <ul class="problem-list" data-problems></ul>
+        </div>
+        <div class="anatomy card reveal" aria-label="How a changeover is assessed">
+          <p class="mono anatomy-k">Changeover anatomy</p>
+          <div class="anat-row">
+            <div class="anat-run"><span class="mono muted">Run A · 06:00</span><strong>Hazelnut praline brownie</strong><div class="chips" data-anat-a></div></div>
+            <div class="anat-arrow" aria-hidden="true">→</div>
+            <div class="anat-run"><span class="mono muted">Run B · 08:00</span><strong>Plain white loaf</strong><div class="chips" data-anat-b></div></div>
+          </div>
+          <div class="anat-formula">
+            <span class="mono">left on line</span> = allergens(A) − declared(B)
+            <div class="chips" data-anat-carry></div>
+          </div>
+          <ol class="anat-checks">
+            <li><b>Was there a clean?</b> Any record between 07:30 and 08:00 on this line.</li>
+            <li><b>Was it the right clean?</b> Dry brushing or sanitising does not remove allergen protein.</li>
+            <li><b>Was it verified?</b> Sign-off and a passing allergen swab.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features" id="product">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Product</p>
+          <h2>Five checks between the supplier spec and the first run.</h2>
+          <p class="lede">Each capability works on the same allergen profiles and schedule, so a change in one place is re-checked everywhere it matters.</p>
+        </div>
+        <div class="feature-list" data-features></div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how" id="how">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">How it works</p>
+          <h2>Start with documents you already have.</h2>
+          <p class="lede">No sensors, no factory hardware, no MES integration to begin with. SavorCline works from specifications, schedules and cleaning logs, and people make the final call.</p>
+        </div>
+        <ol class="steps">
+          <li class="step reveal"><span class="step-n mono">01</span><h3>Add products and specs</h3><p>Upload or paste supplier specifications and recipe sheets. Allergens are extracted, including hidden sources such as whey, spelt or tahini, and shown for review.</p></li>
+          <li class="step reveal"><span class="step-n mono">02</span><h3>Confirm allergen profiles</h3><p>A QA team member confirms each product's "contains" and "may contain" allergens. Confirmed profiles become the reference for every check.</p></li>
+          <li class="step reveal"><span class="step-n mono">03</span><h3>Check the week's schedule</h3><p>Every changeover on every line is assessed against the cleaning records. Risky transitions are ranked high, medium or controlled.</p></li>
+          <li class="step reveal"><span class="step-n mono">04</span><h3>Approve and report</h3><p>Accept or reject the suggested run order, then generate a dated report with findings, required cleans and a sign-off block.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS -->
+    <section class="section solutions" id="solutions">
+      <div class="wrap sol-grid">
+        <div class="reveal">
+          <p class="eyebrow">Solutions</p>
+          <h2>Built first for bakery and confectionery.</h2>
+          <p class="lede">Shared ovens, depositors and enrobers, five or more allergens in rotation, and several changeovers per shift make bakery and confectionery the hardest case. Patterns proven there carry over to other categories.</p>
+          <p class="muted" data-decision-makers></p>
+        </div>
+        <ul class="segments" data-segments></ul>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section class="section tech" id="technology">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Technology</p>
+          <h2>What runs today, and what we're building on AWS.</h2>
+          <p class="lede" data-stage-summary></p>
+        </div>
+        <div class="tech-grid">
+          <div class="card tech-now reveal">
+            <span class="status implemented">Working today</span>
+            <h3>In-browser risk engine</h3>
+            <p>The changeover assessment, sequencing search, cleaning verification and report generator are deterministic JavaScript with an automated test suite. The demo runs entirely in your browser; nothing you enter leaves it.</p>
+            <ul class="mono small-list">
+              <li>14 UK/EU regulated allergens, configurable</li>
+              <li>Exhaustive sequence search up to 8 runs per line</li>
+              <li>Rule-based ingredient synonym matching</li>
+            </ul>
+          </div>
+          <div class="card arch reveal">
+            <div class="arch-head"><span class="status proposed">Proposed architecture</span><span class="muted mono">Not yet deployed</span></div>
+            <div class="arch-diagram" data-arch></div>
+          </div>
+        </div>
+        <div class="aws-table reveal">
+          <table>
+            <thead><tr><th scope="col">AWS service</th><th scope="col">Planned role in SavorCline</th><th scope="col">Status</th></tr></thead>
+            <tbody data-aws></tbody>
+          </table>
+        </div>
+        <div class="roadmap reveal" data-roadmap></div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section pricing" id="pricing">
+      <div class="wrap">
+        <div class="pilot card reveal">
+          <div>
+            <p class="eyebrow">Pricing</p>
+            <h2>Pilot programme in preparation.</h2>
+            <p class="lede">Pricing is not yet published. SavorCline is preparing a pilot with bakery and confectionery sites, where pricing will be agreed per production site. Until then, the demo workspace is free to use with your own product list.</p>
+          </div>
+          <ul class="pilot-list">
+            <li>Allergen profiles for your product range</li>
+            <li>Weekly schedule checks across your lines</li>
+            <li>Cleaning record gap review</li>
+            <li>Report format agreed with your QA team</li>
+          </ul>
+          <div class="pilot-cta" data-pilot-cta></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM (rendered only when founders are recorded in business.js) -->
+    <section class="section team" id="team" data-team hidden></section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="wrap faq-grid">
+        <div class="reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions QA teams ask first.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="reveal"><summary>Does SavorCline replace our HACCP plan or allergen risk assessment?</summary><p>No. It applies your allergen data and cleaning rules to the schedule consistently and shows where they are not met. Your HACCP team still owns the controls, the validation of cleaning methods and the final decision on every run.</p></details>
+          <details class="reveal"><summary>Does the AI decide the production order?</summary><p>No. SavorCline suggests a run order that needs fewer allergen cleans. A planner or QA lead accepts or rejects it. In the planned AI document pipeline, extracted allergens are likewise shown for human confirmation before they are used.</p></details>
+          <details class="reveal"><summary>Which allergens are covered?</summary><p>The demo uses the 14 allergens regulated under UK and EU food information law, including hidden sources such as whey (milk), spelt (gluten) and tahini (sesame). The list is configurable for other markets.</p></details>
+          <details class="reveal"><summary>Is SavorCline available now?</summary><p>SavorCline is building its initial product. The demo workspace on this site is fully interactive and runs on sample data or data you enter, stored only in your browser. Document upload and the AWS-hosted platform are in development.</p></details>
+          <details class="reveal"><summary>What data do we need to start?</summary><p>A product list with allergen information (or the supplier specifications to extract it from), a production schedule per line, and your cleaning records for the same period.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (rendered only when a business email is recorded) or final CTA -->
+    <section class="section final" id="contact" data-contact></section>
+  </main>
+
+  <footer data-footer></footer>
+  <script type="module" src="/src/ui/home.js"></script>
+</body>
+</html>

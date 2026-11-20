@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /center.html
+# Add "Sitemap: https://www.<domain>/sitemap.xml" once the domain is confirmed.
