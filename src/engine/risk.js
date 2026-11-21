@@ -80,7 +80,7 @@ export function assessSchedule(state) {
       } else if (cleans.length) {
         severity = "high";
         title = "Clean type not adequate";
-        detail = `Only ${cleans.map((c) => CLEAN_TYPES[c.type].toLowerCase()).join(", ")} recorded. Removing ${carry.join(", ")} needs a validated allergen wet clean.`;
+        detail = `Recorded: ${cleans.map((c) => CLEAN_TYPES[c.type].toLowerCase()).join(", ")}. Removing ${carry.join(", ")} needs a validated allergen wet clean.`;
       } else {
         severity = "high";
         title = "No clean between runs";
