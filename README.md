@@ -3,7 +3,7 @@
 Static site with no build step and no dependencies. Requires Node 18+ only for the local server and tests.
 
 ```
-npm start      # http://localhost:5173
+npm run dev    # http://localhost:5173
 npm test       # risk engine + business-record tests
 ```
 
@@ -41,5 +41,7 @@ Everything runs in the browser. Workspace data lives in `localStorage` only. No 
 ## Deploying
 
 Live on GitHub Pages: https://web-workss.github.io/savorcline/ (served from `main`, root folder).
+
+**Vercel:** import the repo with framework preset "Other", no build command, root directory `./`. `vercel.json` already sets this, and `.vercelignore` keeps `package.json` out of the upload. The local preview server lives in `scripts/` so Vercel serves the folder as static files instead of trying to run a Node server. If a deploy shows unstyled black-on-white text, the CSS and JS files are not being served: check that the project's Root Directory is the repo root.
 
 All links are relative, so the folder also works as-is on any static host (S3 + CloudFront, Amplify Hosting, Netlify) at a domain root or a sub-path.

@@ -1,10 +1,11 @@
-// Zero-dependency static server for local preview: `npm start` → http://localhost:5173
+// Local preview only (not used in production): `npm run dev` → http://localhost:5173
+// Kept out of the repo root so hosts like Vercel don't mistake the site for a Node server.
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = fileURLToPath(new URL(".", import.meta.url));
+const root = fileURLToPath(new URL("..", import.meta.url));
 const port = Number(process.env.PORT) || 5173;
 const types = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml", ".json": "application/json", ".txt": "text/plain; charset=utf-8", ".ico": "image/x-icon" };
 

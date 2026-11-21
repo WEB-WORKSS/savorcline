@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "SavorCline website, demo workspace and application center",
+  "description": "SavorCline website, demo workspace and application center (static site, no build step)",
   "scripts": {
-    "start": "node server.js",
+    "dev": "node scripts/dev-server.js",
     "test": "node --test tests/"
   }
 }
