@@ -27,7 +27,7 @@ const SEV = { high: "High risk", medium: "Check", low: "Controlled", none: "No c
     }
   });
   const opt = optimiseLine(state, "L1");
-  html += `</ol><div class="board-foot"><span>Suggested order needs <b>${opt.after.cleans}</b> allergen clean${opt.after.cleans === 1 ? "" : "s"} instead of <b>${opt.before.cleans}</b></span><a href="/app.html#sequence">Review in demo →</a></div>`;
+  html += `</ol><div class="board-foot"><span>Suggested order needs <b>${opt.after.cleans}</b> allergen clean${opt.after.cleans === 1 ? "" : "s"} instead of <b>${opt.before.cleans}</b></span><a href="app.html#sequence">Review in demo →</a></div>`;
   $("[data-hero-board]").innerHTML = html;
 })();
 
@@ -115,7 +115,7 @@ $("[data-roadmap]").innerHTML = business.roadmap.map((r) => `<div class="rm"><sp
 // ---- Pricing CTA ----
 $("[data-pilot-cta]").innerHTML = business.email
   ? `<a class="btn primary" href="mailto:${esc(business.email)}?subject=${encodeURIComponent("SavorCline pilot programme")}">Ask about the pilot <span class="arrow">→</span></a>`
-  : `<a class="btn primary" href="/app.html">Try it with your products <span class="arrow">→</span></a>`;
+  : `<a class="btn primary" href="app.html">Try it with your products <span class="arrow">→</span></a>`;
 
 // ---- Team (only real, supplied people) ----
 if (business.founders.length) {
@@ -132,7 +132,7 @@ $("[data-contact]").innerHTML = `
       <p class="lede">Load the sample bakery or enter your own products, lines and cleaning records. Everything stays in your browser.</p>
     </div>
     <div class="final-cta">
-      <a class="btn primary" href="/app.html">Open the demo workspace <span class="arrow">→</span></a>
+      <a class="btn primary" href="app.html">Open the demo workspace <span class="arrow">→</span></a>
       ${business.email ? `<a class="btn ghost" href="mailto:${esc(business.email)}">${esc(business.email)}</a>` : ""}
     </div>
   </div>`;

@@ -2,6 +2,10 @@
 import { business } from "../data/business.js";
 import { ALLERGEN_BY_ID } from "../engine/allergens.js";
 
+// Site root, so links work at a domain root or a GitHub Pages sub-path.
+export const BASE = new URL("../../", import.meta.url).pathname;
+const B = BASE;
+
 export const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 // Logo: an S-shaped production line with a checkpoint at the changeover.
@@ -21,7 +25,7 @@ export function chip(id, pal = false) {
 }
 
 export function navItems(page) {
-  const home = page === "home" ? "" : "/";
+  const home = page === "home" ? "" : B;
   const items = [
     ["Product", `${home}#product`],
     ["Solutions", `${home}#solutions`],
@@ -39,12 +43,12 @@ export function renderHeader(page = "home") {
   if (!el) return;
   const links = navItems(page).map(([l, h]) => `<li><a href="${h}">${l}</a></li>`).join("");
   const cta = page === "app"
-    ? `<a class="btn ghost small" href="/">Back to site</a><a class="btn primary small" href="/app.html#report">Report</a>`
-    : `<a class="btn ghost small" href="/#how">See how it works</a><a class="btn primary small" href="/app.html">Open the demo <span class="arrow">→</span></a>`;
+    ? `<a class="btn ghost small" href="${B}">Back to site</a><a class="btn primary small" href="${B}app.html#report">Report</a>`
+    : `<a class="btn ghost small" href="${B}#how">See how it works</a><a class="btn primary small" href="${B}app.html">Open the demo <span class="arrow">→</span></a>`;
   el.className = "site-header";
   el.innerHTML = `
     <div class="wrap nav">
-      <a class="brand" href="/" aria-label="${esc(business.name)} home">${logoMark()}<span>${esc(business.name)}</span></a>
+      <a class="brand" href="${B}" aria-label="${esc(business.name)} home">${logoMark()}<span>${esc(business.name)}</span></a>
       <button class="menu-btn" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
@@ -72,29 +76,29 @@ export function renderFooter() {
   if (!el) return;
   const year = new Date().getFullYear();
   const company = [
-    business.founders.length && `<li><a href="/#team">Team</a></li>`,
+    business.founders.length && `<li><a href="${B}#team">Team</a></li>`,
     business.email && `<li><a href="mailto:${esc(business.email)}">${esc(business.email)}</a></li>`,
     business.linkedinUrl && `<li><a href="${esc(business.linkedinUrl)}" rel="noopener">LinkedIn</a></li>`,
-    `<li><a href="/#technology">Architecture</a></li>`,
-    `<li><a href="/#faq">FAQ</a></li>`,
+    `<li><a href="${B}#technology">Architecture</a></li>`,
+    `<li><a href="${B}#faq">FAQ</a></li>`,
   ].filter(Boolean).join("");
   el.className = "site-footer";
   el.innerHTML = `
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="brand" href="/">${logoMark(26)}<span>${esc(business.name)}</span></a>
+          <a class="brand" href="${B}">${logoMark(26)}<span>${esc(business.name)}</span></a>
           <p style="margin-top:14px;max-width:34ch">${esc(business.tagline)}</p>
           ${business.headquarters ? `<p class="muted">${esc(business.headquarters)}</p>` : ""}
         </div>
         <div><h4>Product</h4><ul>
-          <li><a href="/#product">Capabilities</a></li>
-          <li><a href="/#how">How it works</a></li>
-          <li><a href="/app.html">Demo workspace</a></li>
-          <li><a href="/#pricing">Pilot programme</a></li>
+          <li><a href="${B}#product">Capabilities</a></li>
+          <li><a href="${B}#how">How it works</a></li>
+          <li><a href="${B}app.html">Demo workspace</a></li>
+          <li><a href="${B}#pricing">Pilot programme</a></li>
         </ul></div>
         <div><h4>Solutions</h4><ul>
-          ${business.customers.slice(0, 4).map((c) => `<li><a href="/#solutions">${esc(c.name)}</a></li>`).join("")}
+          ${business.customers.slice(0, 4).map((c) => `<li><a href="${B}#solutions">${esc(c.name)}</a></li>`).join("")}
         </ul></div>
         <div><h4>Company</h4><ul>${company}</ul></div>
       </div>

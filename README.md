@@ -40,4 +40,6 @@ Everything runs in the browser. Workspace data lives in `localStorage` only. No 
 
 ## Deploying
 
-Upload the folder as-is to any static host (S3 + CloudFront, Amplify Hosting, Netlify, etc.). Exclude `tests/`, `server.js` and `.claude/`. The site uses root-relative paths (`/src/...`), so serve it from the domain root.
+Live on GitHub Pages: https://web-workss.github.io/savorcline/ (served from `main`, root folder).
+
+All links are relative, so the folder also works as-is on any static host (S3 + CloudFront, Amplify Hosting, Netlify) at a domain root or a sub-path.
