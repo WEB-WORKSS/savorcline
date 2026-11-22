@@ -33,7 +33,6 @@ export function navItems(page) {
     ["Technology", `${home}#technology`],
     ["Pricing", `${home}#pricing`],
   ];
-  if (business.founders.length) items.push(["Team", `${home}#team`]);
   if (business.email) items.push(["Contact", `${home}#contact`]);
   return items;
 }
@@ -76,7 +75,6 @@ export function renderFooter() {
   if (!el) return;
   const year = new Date().getFullYear();
   const company = [
-    business.founders.length && `<li><a href="${B}#team">Team</a></li>`,
     business.email && `<li><a href="mailto:${esc(business.email)}">${esc(business.email)}</a></li>`,
     business.linkedinUrl && `<li><a href="${esc(business.linkedinUrl)}" rel="noopener">LinkedIn</a></li>`,
     `<li><a href="${B}#technology">Architecture</a></li>`,
@@ -89,6 +87,7 @@ export function renderFooter() {
         <div>
           <a class="brand" href="${B}">${logoMark(26)}<span>${esc(business.name)}</span></a>
           <p style="margin-top:14px;max-width:34ch">${esc(business.tagline)}</p>
+          ${business.founders.length ? `<p class="muted">Founded by ${business.founders.map((f) => esc(f.name)).join(" &amp; ")}</p>` : ""}
           ${business.headquarters ? `<p class="muted">${esc(business.headquarters)}</p>` : ""}
         </div>
         <div><h4>Product</h4><ul>

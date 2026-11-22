@@ -117,19 +117,17 @@ $("[data-pilot-cta]").innerHTML = business.email
   ? `<a class="btn primary" href="mailto:${esc(business.email)}?subject=${encodeURIComponent("SavorCline pilot programme")}">Ask about the pilot <span class="arrow">→</span></a>`
   : `<a class="btn primary" href="app.html">Try it with your products <span class="arrow">→</span></a>`;
 
-// ---- Team (only real, supplied people) ----
-if (business.founders.length) {
-  const t = $("[data-team]");
-  t.hidden = false;
-  t.innerHTML = `<div class="wrap"><div class="section-head"><p class="eyebrow">Team</p><h2>Who is building SavorCline.</h2></div><div class="team-grid">${business.founders.map((f) => `<div class="card person"><span class="avatar" aria-hidden="true">${esc(f.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase())}</span><h3>${esc(f.name)}</h3><p class="muted">${esc(f.title)}</p>${f.linkedin ? `<a href="${esc(f.linkedin)}" rel="noopener">LinkedIn profile</a>` : ""}</div>`).join("")}</div></div>`;
-}
-
-// ---- Contact / final CTA ----
+// ---- Contact / final CTA, with a casual founder sign-off (only real, supplied people) ----
+const initials = (n) => n.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+const founderNote = business.founders.length
+  ? `<p class="founder-note">${business.founders.map((f) => `<span class="fn-avatar" aria-hidden="true">${esc(initials(f.name))}</span>`).join("")}<span>Built by ${business.founders.map((f) => f.linkedin ? `<a href="${esc(f.linkedin)}" rel="noopener">${esc(f.name)}</a>` : `<b>${esc(f.name)}</b>`).join(" &amp; ")}, ${business.founders.length > 1 ? "founders" : esc(business.founders[0].title.toLowerCase())}</span></p>`
+  : "";
 $("[data-contact]").innerHTML = `
   <div class="wrap final-inner">
     <div>
       <h2>See your own schedule through SavorCline.</h2>
       <p class="lede">Load the sample bakery or enter your own products, lines and cleaning records. Everything stays in your browser.</p>
+      ${founderNote}
     </div>
     <div class="final-cta">
       <a class="btn primary" href="app.html">Open the demo workspace <span class="arrow">→</span></a>
