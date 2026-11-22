@@ -16,7 +16,7 @@ export const business = {
   proposedLinkedinSlug: "savorcline", // unverified; confirm while creating the page
 
   founders: [
-    { name: "Fawaz Bello", title: "Founder", linkedin: null },
+    { name: "Fawaz Bello", title: "Founder & CEO", linkedin: null },
   ],
 
   // ---- Defaults (assumptions, NOT verified facts) ----

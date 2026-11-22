@@ -120,7 +120,7 @@ $("[data-pilot-cta]").innerHTML = business.email
 // ---- Contact / final CTA, with a casual founder sign-off (only real, supplied people) ----
 const initials = (n) => n.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
 const founderNote = business.founders.length
-  ? `<p class="founder-note">${business.founders.map((f) => `<span class="fn-avatar" aria-hidden="true">${esc(initials(f.name))}</span>`).join("")}<span>Built by ${business.founders.map((f) => f.linkedin ? `<a href="${esc(f.linkedin)}" rel="noopener">${esc(f.name)}</a>` : `<b>${esc(f.name)}</b>`).join(" &amp; ")}, ${business.founders.length > 1 ? "founders" : esc(business.founders[0].title.toLowerCase())}</span></p>`
+  ? `<p class="founder-note">${business.founders.map((f) => `<span class="fn-avatar" aria-hidden="true">${esc(initials(f.name))}</span>`).join("")}<span>Built by ${business.founders.map((f) => f.linkedin ? `<a href="${esc(f.linkedin)}" rel="noopener">${esc(f.name)}</a>` : `<b>${esc(f.name)}</b>`).join(" &amp; ")}<span class="fn-title">${business.founders.length > 1 ? "Founders" : esc(business.founders[0].title)}</span></span></p>`
   : "";
 $("[data-contact]").innerHTML = `
   <div class="wrap final-inner">

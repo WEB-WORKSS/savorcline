@@ -87,7 +87,7 @@ export function renderFooter() {
         <div>
           <a class="brand" href="${B}">${logoMark(26)}<span>${esc(business.name)}</span></a>
           <p style="margin-top:14px;max-width:34ch">${esc(business.tagline)}</p>
-          ${business.founders.length ? `<p class="muted">Founded by ${business.founders.map((f) => esc(f.name)).join(" &amp; ")}</p>` : ""}
+          ${business.founders.length ? `<p class="muted">${business.founders.map((f) => `<strong style="color:var(--ink);font-weight:700">${esc(f.name)}</strong>, ${esc(f.title)}`).join(" &amp; ")}</p>` : ""}
           ${business.headquarters ? `<p class="muted">${esc(business.headquarters)}</p>` : ""}
         </div>
         <div><h4>Product</h4><ul>
