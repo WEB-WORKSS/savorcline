@@ -91,13 +91,14 @@ p { margin: 0 0 1em; }
 .brand:hover { color: var(--ink); }
 .brand svg { width: 30px; height: 30px; }
 .nav-links { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
-.nav-links a { color: var(--ink-2); text-decoration: none; font-size: 0.93rem; font-weight: 500; }
+.nav-links a { white-space: nowrap; color: var(--ink-2); text-decoration: none; font-size: 0.93rem; font-weight: 500; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--ink); }
 .nav-cta { margin-left: auto; display: flex; gap: 10px; align-items: center; }
 .menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--rule); border-radius: 999px; width: 42px; height: 42px; cursor: pointer; color: var(--ink); }
 .menu-btn svg { margin: auto; }
 .nav-panel { display: flex; align-items: center; gap: 28px; flex: 1; }
-@media (max-width: 960px) {
+@media (max-width: 1180px) { .nav { gap: 20px; } .nav-links { gap: 16px; } }
+@media (max-width: 1080px) {
   .nav-panel { display: none; }
   .menu-btn { display: grid; place-items: center; }
   .site-header.open { background: var(--paper); border-bottom-color: var(--rule); }

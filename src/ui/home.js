@@ -121,7 +121,7 @@ $("[data-pilot-cta]").innerHTML = business.email
 if (business.founders.length) {
   const t = $("[data-team]");
   t.hidden = false;
-  t.innerHTML = `<div class="wrap"><div class="section-head"><p class="eyebrow">Team</p><h2>Who is building SavorCline.</h2></div><div class="team-grid">${business.founders.map((f) => `<div class="card person"><h3>${esc(f.name)}</h3><p class="muted">${esc(f.title)}</p>${f.linkedin ? `<a href="${esc(f.linkedin)}" rel="noopener">LinkedIn profile</a>` : ""}</div>`).join("")}</div></div>`;
+  t.innerHTML = `<div class="wrap"><div class="section-head"><p class="eyebrow">Team</p><h2>Who is building SavorCline.</h2></div><div class="team-grid">${business.founders.map((f) => `<div class="card person"><span class="avatar" aria-hidden="true">${esc(f.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase())}</span><h3>${esc(f.name)}</h3><p class="muted">${esc(f.title)}</p>${f.linkedin ? `<a href="${esc(f.linkedin)}" rel="noopener">LinkedIn profile</a>` : ""}</div>`).join("")}</div></div>`;
 }
 
 // ---- Contact / final CTA ----

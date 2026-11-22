@@ -12,6 +12,7 @@ export function activateAnswers() {
     { q: "Company website", a: b.domain ? `https://www.${b.domain}` : null },
     { q: "Business email", a: b.email },
     { q: "Company LinkedIn page", a: b.linkedinUrl },
+    { q: "Founder(s)", a: b.founders.length ? b.founders.map((f) => `${f.name}, ${f.title}${f.linkedin ? ` (${f.linkedin})` : ""}`).join("; ") : null },
     { q: "Product stage", a: b.stage.awsLabel },
     { q: "Industry", a: "Food & beverage manufacturing / B2B software (choose the closest option offered in the form)" },
     {

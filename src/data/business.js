@@ -16,7 +16,7 @@ export const business = {
   proposedLinkedinSlug: "savorcline", // unverified; confirm while creating the page
 
   founders: [
-    // { name: "", title: "Founder & CEO", linkedin: "" }
+    { name: "Fawaz Bello", title: "Founder", linkedin: null },
   ],
 
   // ---- Defaults (assumptions, NOT verified facts) ----
@@ -149,6 +149,8 @@ export function missingFacts(b = business) {
   if (!b.domain) out.push({ field: "Domain / website URL", why: "Required by AWS Activate and LinkedIn. Also needed for canonical URLs, sitemap and email." });
   if (!b.email) out.push({ field: "Official business email", why: "Should be on the company domain. Enables the contact form on the website." });
   if (!b.founders.length) out.push({ field: "Founder name, title and LinkedIn", why: "AWS reviewers assess the team. The Team section stays hidden until this is filled in." });
+  for (const f of b.founders.filter((f) => !f.linkedin)) out.push({ field: `LinkedIn profile for ${f.name}`, why: "AWS reviewers look at founder profiles. Add the URL and the Team card links to it automatically." });
+  if (b.founders.some((f) => f.title === "Founder")) out.push({ field: "Founder job title", why: "Shown as “Founder” for now. Confirm, or change it (e.g. Founder & CEO) in business.js." });
   if (!b.headquarters) out.push({ field: "Headquarters (city, country)", why: "Needed for LinkedIn and AWS Activate, and to confirm which allergen regulations to lead with." });
   if (!b.linkedinUrl) out.push({ field: "LinkedIn company page", why: `Not created yet. Proposed slug /company/${b.proposedLinkedinSlug} is unverified.` });
   out.push({ field: `Founding year (assumed ${b.assumptions.foundingYear})`, why: "Default assumption. Confirm against company registration." });
