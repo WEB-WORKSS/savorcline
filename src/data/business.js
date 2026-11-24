@@ -20,6 +20,11 @@ export const business = {
       bio: "Fawaz founded SavorCline so food manufacturers can see allergen cross-contact risk in the production schedule before a shift starts, and leads product, customers and the pilot programme.",
       owns: ["Product", "Customers", "Pilot programme"],
     },
+    {
+      name: "Remi Aluko", title: "CTO", linkedin: null,
+      bio: null,
+      owns: null,
+    },
   ],
 
   // ---- Defaults (assumptions, NOT verified facts) ----

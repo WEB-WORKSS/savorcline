@@ -100,6 +100,7 @@
 .founder-avatar { width: 128px; height: 128px; border-radius: 24px; background: var(--forest); color: var(--paper); display: grid; place-items: center; font: 500 2.6rem/1 var(--display); }
 .founder h3 { font-size: 2rem; margin: 4px 0 10px; }
 .founder p { color: var(--ink-2); max-width: 62ch; }
+.founder + .founder { margin-top: 20px; }
 .founder-links { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0 0; }
 .facts { display: grid; grid-template-columns: repeat(4, 1fr); margin: 16px 0 0; border: 1px solid var(--rule); border-radius: var(--r-lg); background: var(--card); overflow: hidden; }
 .facts div { padding: 18px 20px; border-left: 1px solid var(--rule-2); }

@@ -84,7 +84,7 @@ export function footerHTML() {
         <div>
           <a class="brand" href="./">${logoMark(26)}<span>${esc(business.name)}</span></a>
           <p style="margin-top:14px;max-width:34ch">${esc(business.tagline)}</p>
-          ${f.length ? `<p class="muted">${f.map((x) => `<strong style="color:var(--ink);font-weight:700">${esc(x.name)}</strong>, ${esc(x.title)}`).join(" &amp; ")}</p>` : ""}
+          ${f.length ? `<p class="muted">${f.map((x) => `<strong style="color:var(--ink);font-weight:700">${esc(x.name)}</strong>, ${esc(x.title)}`).join("<br>")}</p>` : ""}
           ${business.email ? `<p><a href="mailto:${esc(business.email)}">${esc(business.email)}</a></p>` : ""}
           ${business.headquarters ? `<p class="muted">${esc(business.headquarters)}</p>` : ""}
         </div>

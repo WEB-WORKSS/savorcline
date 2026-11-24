@@ -21,7 +21,8 @@ function page({ path, title, description, body, scripts = ["src/ui/page.js"], st
   const org = {
     "@context": "https://schema.org", "@type": "Organization", name: b.name, url: SITE,
     logo: `${SITE}/favicon.svg`, description: b.positioning, slogan: b.tagline, foundingDate: String(year),
-    founder: b.founders.map((f) => ({ "@type": "Person", name: f.name, jobTitle: f.title })),
+    founder: b.founders.filter((f) => /founder/i.test(f.title)).map((f) => ({ "@type": "Person", name: f.name, jobTitle: f.title })),
+    employee: b.founders.filter((f) => !/founder/i.test(f.title)).map((f) => ({ "@type": "Person", name: f.name, jobTitle: f.title })),
     ...(b.email ? { email: b.email } : {}), ...(b.linkedinUrl ? { sameAs: [b.linkedinUrl] } : {}),
   };
   return `<!DOCTYPE html>
@@ -387,7 +388,7 @@ const team = () => `
     <section class="section team" id="team">
       <div class="wrap">
         ${head("Team", `The Team Behind ${b.name}`, `${b.name} is a food-safety software company founded in ${year}. It is building allergen risk management software that helps food manufacturers catch cross-contact risk in the production schedule.`)}
-        ${b.founders.map((f) => `
+        ${b.founders.map((f, i) => { const links = (i === 0 && b.email ? `<a class="btn ghost small" href="mailto:${esc(b.email)}">${esc(b.email)}</a>` : "") + (f.linkedin ? `<a class="btn ghost small" href="${esc(f.linkedin)}" rel="noopener">LinkedIn</a>` : "") + (i === 0 && b.linkedinUrl ? `<a class="btn ghost small" href="${esc(b.linkedinUrl)}" target="_blank" rel="noopener">${esc(b.name)} company page</a>` : ""); return `
         <article class="founder card reveal">
           <div class="founder-avatar" aria-hidden="true">${initials(f.name)}</div>
           <div>
@@ -395,9 +396,9 @@ const team = () => `
             <h3>${esc(f.name)}</h3>
             ${f.bio ? `<p>${esc(f.bio)}</p>` : ""}
             ${f.owns ? `<div class="chips">${f.owns.map((o) => `<span class="chip">${esc(o)}</span>`).join("")}</div>` : ""}
-            <p class="founder-links">${b.email ? `<a class="btn ghost small" href="mailto:${esc(b.email)}">${esc(b.email)}</a>` : ""}${f.linkedin ? `<a class="btn ghost small" href="${esc(f.linkedin)}" rel="noopener">LinkedIn</a>` : ""}${b.linkedinUrl ? `<a class="btn ghost small" href="${esc(b.linkedinUrl)}" target="_blank" rel="noopener">${esc(b.name)} company page</a>` : ""}</p>
+            ${links ? `<p class="founder-links">${links}</p>` : ""}
           </div>
-        </article>`).join("")}
+        </article>`; }).join("")}
         <dl class="facts reveal">${[["Founded", year], ["Category", "Food safety software"], ["Stage", "Building initial product"], ["Company type", b.assumptions.companyType]].map(([k, v]) => `<div><dt class="mono">${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
         <div class="hear card reveal"><p class="eyebrow">We'd like to hear from</p><ul>${["Bakery and confectionery sites willing to pilot", "Technical and QA managers", "Advisors who know allergen management"].map((x) => `<li>${x}</li>`).join("")}</ul></div>
       </div>
@@ -560,7 +561,7 @@ const PAGES = {
     body: intro("Security", "Security and safeguards", `How ${b.name} is designed to protect supplier documents, keep people in control and keep every finding traceable, and what is and isn't built yet.`) + securityDetail() + safeguards(false) + closing() },
   "pricing.html": { path: "pricing", current: "pricing", title: `Pricing | ${b.name}`, description: "Proposed SavorCline launch pricing per production site. Plans start with an early-access conversation.",
     body: intro("Pricing", "Simple plans, priced per production site.", "Proposed launch pricing in USD, excluding taxes. No payment is taken today. Every plan starts with an early-access conversation.") + pricing() + closing() },
-  "about.html": { path: "about", current: "about", title: `About and team | ${b.name}`, description: `${b.name} was founded in ${year} to help food manufacturers catch allergen cross-contact risk in the production schedule. Meet the founder and see the roadmap.`,
+  "about.html": { path: "about", current: "about", title: `About and team | ${b.name}`, description: `${b.name} was founded in ${year} to help food manufacturers catch allergen cross-contact risk in the production schedule. Meet the team and see the roadmap.`,
     body: intro("About", `About ${b.name}`, `${b.name} was founded in ${year} to help food manufacturers see allergen cross-contact risk in the production schedule, before a shift starts, instead of finding it on a failed swab or a recall notice.`, `<div class="mission"><div class="card"><p class="eyebrow">Mission</p><p>Make every allergen changeover visible, checked and signed off before production begins.</p></div><div class="card"><p class="eyebrow">How we build</p><p>With early-access QA teams, on their own schedules, with every finding traceable to a record.</p></div></div>`) + team() + roadmap() + closing() },
   "contact.html": { path: "contact", current: "contact", title: `Request early access | ${b.name}`, description: "Request early access to SavorCline, ask about pricing or tell us where allergen changeovers cause you the most work.",
     body: contactForm() + faq(), scripts: ["src/ui/page.js", "src/ui/contact.js"] },
