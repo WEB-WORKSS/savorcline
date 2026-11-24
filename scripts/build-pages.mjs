@@ -395,7 +395,7 @@ const team = () => `
             <h3>${esc(f.name)}</h3>
             ${f.bio ? `<p>${esc(f.bio)}</p>` : ""}
             ${f.owns ? `<div class="chips">${f.owns.map((o) => `<span class="chip">${esc(o)}</span>`).join("")}</div>` : ""}
-            <p class="founder-links">${b.email ? `<a class="btn ghost small" href="mailto:${esc(b.email)}">${esc(b.email)}</a>` : ""}${f.linkedin ? `<a class="btn ghost small" href="${esc(f.linkedin)}" rel="noopener">LinkedIn</a>` : ""}</p>
+            <p class="founder-links">${b.email ? `<a class="btn ghost small" href="mailto:${esc(b.email)}">${esc(b.email)}</a>` : ""}${f.linkedin ? `<a class="btn ghost small" href="${esc(f.linkedin)}" rel="noopener">LinkedIn</a>` : ""}${b.linkedinUrl ? `<a class="btn ghost small" href="${esc(b.linkedinUrl)}" target="_blank" rel="noopener">${esc(b.name)} company page</a>` : ""}</p>
           </div>
         </article>`).join("")}
         <dl class="facts reveal">${[["Founded", year], ["Category", "Food safety software"], ["Stage", "Building initial product"], ["Company type", b.assumptions.companyType]].map(([k, v]) => `<div><dt class="mono">${k}</dt><dd>${v}</dd></div>`).join("")}</dl>

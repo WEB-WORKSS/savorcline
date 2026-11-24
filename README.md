@@ -26,7 +26,7 @@ Vercel serves clean URLs (`/product` → `product.html`) and redirects the old `
 
 `src/data/business.js` holds every business fact. `null` means not supplied, and public pages hide anything null.
 
-Business email: `bello@savorcline.site`. The early-access form opens a pre-filled email to it; set `formEndpoint` to POST to a form service instead. Optional facts not yet set: `headquarters`, `linkedinUrl`, founder `linkedin`.
+Business email: `bello@savorcline.site`. The early-access form opens a pre-filled email to it; set `formEndpoint` to POST to a form service instead. Optional facts not yet set: `headquarters`, founder `linkedin`.
 
 Pricing on the site is **proposed** launch pricing ($249 / $599 per site per month, Group custom), labelled as such. Confirm or change it in `scripts/build-pages.mjs`.
 

@@ -11,7 +11,7 @@ export const business = {
   domain: "savorcline.site", // live at https://www.savorcline.site
   email: "bello@savorcline.site", // official business email on the company domain
   headquarters: null,      // city, country
-  linkedinUrl: null,       // only set once the company page actually exists
+  linkedinUrl: "https://www.linkedin.com/company/savorcline/", // company page
   formEndpoint: null,      // optional HTTPS endpoint that accepts POSTed JSON from the early-access form (e.g. a Lambda function URL or Formspree)
 
   founders: [
