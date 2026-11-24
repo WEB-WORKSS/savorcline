@@ -2,10 +2,6 @@
 import { business } from "../data/business.js";
 import { ALLERGEN_BY_ID } from "../engine/allergens.js";
 
-// Site root, so links work at a domain root or a GitHub Pages sub-path.
-export const BASE = new URL("../../", import.meta.url).pathname;
-const B = BASE;
-
 export const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 // Logo: an S-shaped production line with a checkpoint at the changeover.
@@ -24,30 +20,25 @@ export function chip(id, pal = false) {
   return `<span class="chip${pal ? " pal" : ""}" style="--c:${a.color}" title="${pal ? "May contain: " : ""}${esc(a.label)}"><i></i>${esc(a.label)}</span>`;
 }
 
-export function navItems(page) {
-  const home = page === "home" ? "" : B;
-  const items = [
-    ["Product", `${home}#product`],
-    ["Solutions", `${home}#solutions`],
-    ["How it works", `${home}#how`],
-    ["Technology", `${home}#technology`],
-    ["Pricing", `${home}#pricing`],
-  ];
-  if (business.email) items.push(["Contact", `${home}#contact`]);
-  return items;
-}
+// All links are relative, so the site works at a domain root and on any static host.
+export const NAV = [
+  ["Product", "product"],
+  ["How it works", "how-it-works"],
+  ["Solutions", "solutions"],
+  ["Technology", "technology"],
+  ["Security", "security"],
+  ["Pricing", "pricing"],
+  ["Team", "about"],
+];
 
-export function renderHeader(page = "home") {
-  const el = document.querySelector("[data-header]");
-  if (!el) return;
-  const links = navItems(page).map(([l, h]) => `<li><a href="${h}">${l}</a></li>`).join("");
-  const cta = page === "app"
-    ? `<a class="btn ghost small" href="${B}">Back to site</a><a class="btn primary small" href="${B}app.html#report">Report</a>`
-    : `<a class="btn ghost small" href="${B}#how">See how it works</a><a class="btn primary small" href="${B}app.html">Open the demo <span class="arrow">→</span></a>`;
-  el.className = "site-header";
-  el.innerHTML = `
+export function headerHTML(page = "home") {
+  const links = NAV.map(([l, h]) => `<li><a href="${h}"${page === h ? ' aria-current="page"' : ""}>${l}</a></li>`).join("");
+  const cta = page === "demo"
+    ? `<a class="btn ghost small" href="./">Back to site</a><a class="btn primary small" href="contact">Request a pilot</a>`
+    : `<a class="btn ghost small" href="demo">Live demo</a><a class="btn primary small" href="contact">Request early access <span class="arrow">→</span></a>`;
+  return `
     <div class="wrap nav">
-      <a class="brand" href="${B}" aria-label="${esc(business.name)} home">${logoMark()}<span>${esc(business.name)}</span></a>
+      <a class="brand" href="./" aria-label="${esc(business.name)} home">${logoMark()}<span>${esc(business.name)}</span></a>
       <button class="menu-btn" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
@@ -56,6 +47,12 @@ export function renderHeader(page = "home") {
         <div class="nav-cta">${cta}</div>
       </div>
     </div>`;
+}
+
+/** Adds menu toggling and scroll styling to a header already in the page. */
+export function wireHeader() {
+  const el = document.querySelector(".site-header");
+  if (!el) return;
   const btn = el.querySelector(".menu-btn");
   const close = () => { el.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-label", "Open menu"); };
   btn.addEventListener("click", () => {
@@ -70,42 +67,62 @@ export function renderHeader(page = "home") {
   window.addEventListener("scroll", onScroll, { passive: true });
 }
 
-export function renderFooter() {
-  const el = document.querySelector("[data-footer]");
+/** For pages without a prebuilt header (the demo and 404). */
+export function renderHeader(page = "home") {
+  const el = document.querySelector("[data-header]");
   if (!el) return;
-  const year = new Date().getFullYear();
-  const company = [
-    business.email && `<li><a href="mailto:${esc(business.email)}">${esc(business.email)}</a></li>`,
-    business.linkedinUrl && `<li><a href="${esc(business.linkedinUrl)}" rel="noopener">LinkedIn</a></li>`,
-    `<li><a href="${B}#technology">Architecture</a></li>`,
-    `<li><a href="${B}#faq">FAQ</a></li>`,
-  ].filter(Boolean).join("");
-  el.className = "site-footer";
-  el.innerHTML = `
+  el.className = "site-header";
+  el.innerHTML = headerHTML(page);
+  wireHeader();
+}
+
+export function footerHTML() {
+  const f = business.founders;
+  return `
     <div class="wrap">
-      <div class="foot-grid">
+      <div class="foot-grid foot-grid-5">
         <div>
-          <a class="brand" href="${B}">${logoMark(26)}<span>${esc(business.name)}</span></a>
+          <a class="brand" href="./">${logoMark(26)}<span>${esc(business.name)}</span></a>
           <p style="margin-top:14px;max-width:34ch">${esc(business.tagline)}</p>
-          ${business.founders.length ? `<p class="muted">${business.founders.map((f) => `<strong style="color:var(--ink);font-weight:700">${esc(f.name)}</strong>, ${esc(f.title)}`).join(" &amp; ")}</p>` : ""}
+          ${f.length ? `<p class="muted">${f.map((x) => `<strong style="color:var(--ink);font-weight:700">${esc(x.name)}</strong>, ${esc(x.title)}`).join(" &amp; ")}</p>` : ""}
+          ${business.email ? `<p><a href="mailto:${esc(business.email)}">${esc(business.email)}</a></p>` : ""}
           ${business.headquarters ? `<p class="muted">${esc(business.headquarters)}</p>` : ""}
         </div>
         <div><h4>Product</h4><ul>
-          <li><a href="${B}#product">Capabilities</a></li>
-          <li><a href="${B}#how">How it works</a></li>
-          <li><a href="${B}app.html">Demo workspace</a></li>
-          <li><a href="${B}#pricing">Pilot programme</a></li>
+          <li><a href="product">Platform overview</a></li>
+          <li><a href="how-it-works">How it works</a></li>
+          <li><a href="demo">Live demo</a></li>
+          <li><a href="pricing">Pricing</a></li>
+          <li><a href="about#roadmap">Roadmap</a></li>
         </ul></div>
         <div><h4>Solutions</h4><ul>
-          ${business.customers.slice(0, 4).map((c) => `<li><a href="${B}#solutions">${esc(c.name)}</a></li>`).join("")}
+          ${business.customers.slice(0, 4).map((c) => `<li><a href="solutions#${c.id}">${esc(c.name)}</a></li>`).join("")}
         </ul></div>
-        <div><h4>Company</h4><ul>${company}</ul></div>
+        <div><h4>Company</h4><ul>
+          <li><a href="about">About &amp; team</a></li>
+          <li><a href="technology">Technology (AWS)</a></li>
+          <li><a href="security">Security &amp; safeguards</a></li>
+          <li><a href="contact#faq">FAQ</a></li>
+          <li><a href="contact">Contact</a></li>
+          ${business.linkedinUrl ? `<li><a href="${esc(business.linkedinUrl)}" rel="noopener">LinkedIn</a></li>` : ""}
+        </ul></div>
+        <div><h4>Legal</h4><ul>
+          <li><a href="privacy">Privacy Policy</a></li>
+          <li><a href="terms">Terms of Service</a></li>
+        </ul></div>
       </div>
       <div class="foot-base">
-        <span>© ${year} ${esc(business.name)}. All rights reserved.</span>
-        <span>SavorCline supports, and does not replace, your HACCP and allergen management procedures.</span>
+        <span>© ${business.assumptions.foundingYear} ${esc(business.name)} · ${esc(business.domain)}</span>
+        <span>${esc(business.stage.publicLabel)} · The live demo uses sample data. SavorCline supports, and does not replace, your HACCP and allergen procedures.</span>
       </div>
     </div>`;
+}
+
+export function renderFooter() {
+  const el = document.querySelector("[data-footer]");
+  if (!el) return;
+  el.className = "site-footer";
+  el.innerHTML = footerHTML();
 }
 
 export function initReveal() {

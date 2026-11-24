@@ -3,6 +3,47 @@
   "framework": null,
   "installCommand": "",
   "buildCommand": "",
-  "cleanUrls": false,
-  "trailingSlash": false
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/app",
+      "destination": "/demo",
+      "permanent": true
+    },
+    {
+      "source": "/app.html",
+      "destination": "/demo",
+      "permanent": true
+    },
+    {
+      "source": "/center",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/center.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    }
+  ]
 }

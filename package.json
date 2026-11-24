@@ -6,6 +6,7 @@
   "description": "SavorCline website, demo workspace and application center (static site, no build step)",
   "scripts": {
     "dev": "node scripts/dev-server.js",
-    "test": "node --test tests/"
+    "test": "node --test tests/*.test.js",
+    "build": "node scripts/build-pages.mjs"
   }
 }

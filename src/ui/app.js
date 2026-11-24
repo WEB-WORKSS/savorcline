@@ -5,7 +5,7 @@ import { ALLERGENS, ALLERGEN_BY_ID, extractAllergens } from "../engine/allergens
 import { assessSchedule, verifyCleaning, optimiseLine, applyProposal, buildReport, runsForLine, CLEAN_TYPES } from "../engine/risk.js";
 import { renderHeader, esc, chip, fmtTime, fmtDate } from "./site.js";
 
-renderHeader("app");
+renderHeader("demo");
 
 const KEY = "savorcline.workspace.v1";
 const $ = (s, r = document) => r.querySelector(s);
@@ -403,4 +403,4 @@ window.addEventListener("hashchange", () => {
   window.scrollTo({ top: 0 });
 });
 render();
-document.title = `Demo workspace — ${business.name}`;
+document.title = `Live demo | ${business.name}`;

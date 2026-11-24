@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security and safeguards | SavorCline</title>
+  <meta name="description" content="How SavorCline is designed to protect supplier documents, keep QA teams in control and keep every finding traceable.">
+  <link rel="canonical" href="https://www.savorcline.site/security">
+  <meta name="theme-color" content="#1f5c45">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SavorCline">
+  <meta property="og:title" content="Security and safeguards | SavorCline">
+  <meta property="og:description" content="How SavorCline is designed to protect supplier documents, keep QA teams in control and keep every finding traceable.">
+  <meta property="og:url" content="https://www.savorcline.site/security">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Security and safeguards | SavorCline">
+  <meta name="twitter:description" content="How SavorCline is designed to protect supplier documents, keep QA teams in control and keep every finding traceable.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/styles/home.css">
+  <link rel="stylesheet" href="src/styles/pages.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SavorCline","url":"https://www.savorcline.site","logo":"https://www.savorcline.site/favicon.svg","description":"SavorCline helps quality and production teams at food manufacturers find allergen cross-contamination risks in their production schedules before a shift starts. It checks each run against the allergen profile of the run before it and the cleaning that happened in between, flags unsafe changeovers and missing cleaning records, and suggests safer run orders for the QA team to approve.","slogan":"Preventing food safety risks before production begins.","foundingDate":"2026","founder":[{"@type":"Person","name":"Fawaz Bello","jobTitle":"Founder & CEO"}],"email":"bello@savorcline.site"}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="./" aria-label="SavorCline home">
+<svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
+  <rect width="32" height="32" rx="8" fill="#1f5c45"/>
+  <path d="M7 9.5H19.5a3.75 3.75 0 0 1 0 7.5H12.5a3.75 3.75 0 0 0 0 7.5H25" fill="none" stroke="#f6f2ea" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="7" cy="9.5" r="2" fill="#d9c9a3"/>
+  <circle cx="16" cy="17" r="3.2" fill="#d8612a" stroke="#1f5c45" stroke-width="1.4"/>
+  <circle cx="25" cy="24.5" r="2" fill="#d9c9a3"/>
+</svg><span>SavorCline</span></a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-links"><li><a href="product">Product</a></li><li><a href="how-it-works">How it works</a></li><li><a href="solutions">Solutions</a></li><li><a href="technology">Technology</a></li><li><a href="security" aria-current="page">Security</a></li><li><a href="pricing">Pricing</a></li><li><a href="about">Team</a></li></ul>
+        <div class="nav-cta"><a class="btn ghost small" href="demo">Live demo</a><a class="btn primary small" href="contact">Request early access <span class="arrow">→</span></a></div>
+      </div>
+    </div></header>
+  <main id="main">
+
+    <section class="page-intro">
+      <div class="wrap">
+        <p class="eyebrow">Security</p>
+        <h1>Security and safeguards</h1>
+        <p class="lede">How SavorCline is designed to protect supplier documents, keep people in control and keep every finding traceable, and what is and isn't built yet.</p>
+        
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap sec-grid"><div class="card trio-c reveal"><h2>What the demo does with data</h2><ul><li>The live demo runs entirely in your browser.</li><li>Products, schedules and cleaning records you enter are stored in your browser's local storage only and never sent to a server.</li><li>You can reload the sample or start empty at any time.</li></ul></div><div class="card trio-c reveal"><h2>How production will handle your documents</h2><ul><li>Supplier specifications, schedules and cleaning records are stored on AWS, partitioned by customer.</li><li>Documents are encrypted in transit and at rest with per-tenant keys.</li><li>Hosting regions are agreed with each pilot site.</li></ul></div><div class="card trio-c reveal"><h2>Access and roles</h2><ul><li>Users sign in with Amazon Cognito; there are no shared logins.</li><li>Planners, QA and auditors each get only the actions their role needs.</li><li>Roles are enforced on the server, not only in the interface.</li></ul></div><div class="card trio-c reveal"><h2>How the AI is constrained</h2><ul><li>Risk ratings come from deterministic rules that show their working.</li><li>AI only reads documents, suggests allergen profiles and explains findings.</li><li>Every AI-extracted allergen is confirmed by a person before it is used.</li></ul></div><div class="card trio-c reveal"><h2>Audit trail</h2><ul><li>Profile confirmations, schedule changes, approvals and reports are written to an activity log.</li><li>Each entry records who acted and when.</li></ul></div><div class="card trio-c reveal"><h2>What isn't built yet</h2><ul><li>The AWS document pipeline, sign-in and server-side roles are proposed, not deployed.</li><li>No certifications are claimed. We will not describe any as held until they are.</li></ul></div></div>
+    </section>
+    <section class="section safe" id="safeguards">
+      <div class="wrap">
+        
+        <div class="section-head reveal">
+          <p class="eyebrow">Safeguards</p>
+          <h2>Built for QA teams that have to sign the report.</h2>
+          
+        </div>
+        <div class="safe-grid"><div class="safe-item reveal"><h3>Every finding is traceable</h3><p>Each risk shows the two runs, the allergens left on the line and the cleaning record it was checked against.</p></div><div class="safe-item reveal"><h3>People make the call</h3><p>Suggested run orders and AI-extracted allergens are reviewed and approved by a person before they are used.</p></div><div class="safe-item reveal"><h3>Missing is never 'fine'</h3><p>A missing cleaning record, sign-off or swab is flagged as a gap, never treated as a pass.</p></div><div class="safe-item reveal"><h3>Supplier data kept separate</h3><p>The architecture isolates each customer's documents and encrypts them with per-tenant keys.</p></div><div class="safe-item reveal"><h3>Roles, enforced</h3><p>Planners, QA and auditors each get only the actions they need. Production enforces roles on the server.</p></div><div class="safe-item reveal"><h3>Everything recorded</h3><p>Profile confirmations, schedule changes, approvals and reports are written to an activity log.</p></div></div>
+        
+      </div>
+    </section>
+    <section class="final">
+      <div class="wrap final-inner">
+        <div>
+          <h2>See your own schedule through SavorCline.</h2>
+          <p class="lede">Explore the live demo on a sample bakery, or talk to us about a pilot on your own lines.</p>
+        </div>
+        <div class="final-cta">
+          <a class="btn primary" href="contact">Request early access <span class="arrow">→</span></a>
+          <a class="btn ghost" href="demo">Explore the live demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid foot-grid-5">
+        <div>
+          <a class="brand" href="./">
+<svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true">
+  <rect width="32" height="32" rx="8" fill="#1f5c45"/>
+  <path d="M7 9.5H19.5a3.75 3.75 0 0 1 0 7.5H12.5a3.75 3.75 0 0 0 0 7.5H25" fill="none" stroke="#f6f2ea" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="7" cy="9.5" r="2" fill="#d9c9a3"/>
+  <circle cx="16" cy="17" r="3.2" fill="#d8612a" stroke="#1f5c45" stroke-width="1.4"/>
+  <circle cx="25" cy="24.5" r="2" fill="#d9c9a3"/>
+</svg><span>SavorCline</span></a>
+          <p style="margin-top:14px;max-width:34ch">Preventing food safety risks before production begins.</p>
+          <p class="muted"><strong style="color:var(--ink);font-weight:700">Fawaz Bello</strong>, Founder &amp; CEO</p>
+          <p><a href="mailto:bello@savorcline.site">bello@savorcline.site</a></p>
+          
+        </div>
+        <div><h4>Product</h4><ul>
+          <li><a href="product">Platform overview</a></li>
+          <li><a href="how-it-works">How it works</a></li>
+          <li><a href="demo">Live demo</a></li>
+          <li><a href="pricing">Pricing</a></li>
+          <li><a href="about#roadmap">Roadmap</a></li>
+        </ul></div>
+        <div><h4>Solutions</h4><ul>
+          <li><a href="solutions#bakery">Bakery &amp; confectionery</a></li><li><a href="solutions#dairy">Dairy processing</a></li><li><a href="solutions#ready-meals">Packaged &amp; ready meals</a></li><li><a href="solutions#meat">Meat processing</a></li>
+        </ul></div>
+        <div><h4>Company</h4><ul>
+          <li><a href="about">About &amp; team</a></li>
+          <li><a href="technology">Technology (AWS)</a></li>
+          <li><a href="security">Security &amp; safeguards</a></li>
+          <li><a href="contact#faq">FAQ</a></li>
+          <li><a href="contact">Contact</a></li>
+          
+        </ul></div>
+        <div><h4>Legal</h4><ul>
+          <li><a href="privacy">Privacy Policy</a></li>
+          <li><a href="terms">Terms of Service</a></li>
+        </ul></div>
+      </div>
+      <div class="foot-base">
+        <span>© 2026 SavorCline · savorcline.site</span>
+        <span>Early access open · The live demo uses sample data. SavorCline supports, and does not replace, your HACCP and allergen procedures.</span>
+      </div>
+    </div></footer>
+  <script type="module" src="src/ui/page.js"></script>
+</body>
+</html>

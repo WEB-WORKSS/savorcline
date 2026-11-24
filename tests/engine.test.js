@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { assessSchedule, optimiseLine, verifyCleaning, applyProposal, buildReport, carryOver } from "../src/engine/risk.js";
 import { extractAllergens } from "../src/engine/allergens.js";
 import { sampleState, SAMPLE_SPEC } from "../src/data/sample.js";
-import { business, missingFacts } from "../src/data/business.js";
+import { business } from "../src/data/business.js";
 
 const sev = (f) => f.map((x) => `${x.from}>${x.to}:${x.severity}`);
 
@@ -81,5 +81,4 @@ test("report excludes no-risk changeovers", () => {
 test("business record stays honest", () => {
   assert.equal(business.stage.awsLabel, "Ideating/building initial product");
   assert.ok(business.aws.every((a) => a.status !== "deployed"), "no AWS service may be marked deployed without evidence");
-  assert.ok(missingFacts().some((m) => m.field.startsWith("Domain")));
 });
