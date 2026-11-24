@@ -13,7 +13,6 @@ npm test       # risk engine + business-record tests
 |---|---|
 | `index.html` | Public website: hero, problem, features, how it works, solutions, technology, pricing (pilot), FAQ |
 | `app.html` | Demo workspace: products & allergens, schedule, sequencing, cleaning records, document extraction, report |
-| `center.html` | **Internal** application center: AWS Activate answers, LinkedIn kit, facts to confirm. `noindex`, not linked publicly, disallowed in `robots.txt` |
 
 ## Single source of truth
 

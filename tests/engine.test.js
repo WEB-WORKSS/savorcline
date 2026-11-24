@@ -83,12 +83,3 @@ test("business record stays honest", () => {
   assert.ok(business.aws.every((a) => a.status !== "deployed"), "no AWS service may be marked deployed without evidence");
   assert.ok(missingFacts().some((m) => m.field.startsWith("Domain")));
 });
-
-test("application answers and LinkedIn kit derive cleanly", async () => {
-  const { activateAnswers, linkedinKit, consistencyChecks } = await import("../src/data/application.js");
-  const li = linkedinKit();
-  assert.ok(li.tagline.length <= li.taglineLimit);
-  assert.ok(li.about.length <= li.aboutLimit);
-  assert.ok(activateAnswers().some((a) => a.a === "Ideating/building initial product"));
-  assert.ok(consistencyChecks()[0].ok);
-});
